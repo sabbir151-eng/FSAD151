@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie Express - Scan QR Code</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f97316, #ef4444);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      max-width: 500px;
+    }
+    .logo { font-size: 64px; margin-bottom: 16px; }
+    h1 { font-size: 28px; color: #1f2937; margin-bottom: 8px; }
+    p { color: #6b7280; margin-bottom: 24px; font-size: 16px; }
+    .qr-container {
+      background: #fff;
+      padding: 16px;
+      border-radius: 16px;
+      display: inline-block;
+      border: 3px solid #f97316;
+    }
+    .url-box {
+      margin-top: 24px;
+      background: #f3f4f6;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #374151;
+      word-break: break-all;
+    }
+    .url-box a { color: #f97316; text-decoration: none; font-weight: 600; }
+    .steps {
+      margin-top: 24px;
+      text-align: left;
+      background: #fff7ed;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .steps h3 { color: #ea580c; margin-bottom: 12px; font-size: 16px; }
+    .steps li { margin-bottom: 8px; color: #374151; font-size: 14px; }
+    .note {
+      margin-top: 20px;
+      padding: 12px;
+      background: #fef2f2;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">🍕</div>
+    <h1>Foodie Express</h1>
+    <p>Scan this QR code with your phone to open the app</p>
+
+    <div class="qr-container">
+      <img id="qr" alt="QR Code" />
+    </div>
+
+    <div class="url-box">
+      <a href="https://odd-queens-look.loca.lt" target="_blank">https://odd-queens-look.loca.lt</a>
+    </div>
+
+    <div class="steps">
+      <h3>📱 How to use:</h3>
+      <ol>
+        <li>Open your <strong>phone camera</strong></li>
+        <li>Point it at the <strong>QR code</strong> above</li>
+        <li>Tap the link that appears</li>
+        <li>If it asks to continue, click <strong>"Click to Continue"</strong></li>
+        <li>The app will open — tap <strong>"Add to Home Screen"</strong> to install!</li>
+      </ol>
+    </div>
+
+    <div class="note">
+      ⚠️ First time? You may see a page saying "Friendly Reminder" — just click <strong>"Click to Continue"</strong> to proceed.
+    </div>
+  </div>
+
+  <!-- QR Code Generator -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script>
+    const url = 'https://odd-queens-look.loca.lt';
+    QRCode.toDataURL(url, {
+      width: 280,
+      margin: 2,
+      color: { dark: '#1f2937', light: '#ffffff' }
+    }).then(dataUrl => {
+      document.getElementById('qr').src = dataUrl;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #f97316; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #ea580c; }
+
+/* Smooth transitions globally */
+* { transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffffff 50%, #ffedd5 100%);
+  min-height: 100vh;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
+}
+
+/* Pulse animation for status */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-status-pulse { animation: status-pulse 2s ease-in-out infinite; }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #f97316;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* ===== PWA / Mobile Optimizations ===== */
+
+/* Safe area padding for notched phones (iPhone X+) */
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent overscroll bounce on mobile */
+html {
+  overscroll-behavior: none;
+}
+
+/* Touch-friendly tap targets */
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Disable text selection on interactive elements for app-like feel */
+nav, button, .card-hover {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Bottom nav safe area */
+footer {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* Mobile-specific styles */
+@media (max-width: 640px) {
+  .card-hover:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .card-hover:active {
+    transform: scale(0.98);
+  }
+}
+
+/* PWA install banner */
+.pwa-install-banner {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
