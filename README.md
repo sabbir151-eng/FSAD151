@@ -1,6 +1,6 @@
 # 🍽️ Campus Canteen — College Food Ordering System
 
-A full-stack web application for college canteen management. Students can browse the menu, place orders, and receive invoices. Canteen staff can manage the menu and fulfill incoming orders in real-time. Built for the **FSAD Hackathon**.
+A full-stack web application for college canteen management. Students can browse the menu, place orders, and receive invoices. Canteen staff can manage the menu and fulfill incoming orders in real-time.
 
 ---
 
